@@ -3,9 +3,9 @@ import numpy as np
 import pandas as pd
 
 SEED = 42
-BASE = r"C:\Users\Lbundi\Desktop\Strathmore Lectures\AML YR 26\Data"
+BASE = "../Data"
 
-df_raw = pd.read_csv(BASE + r"\mobile_money_statements.csv")
+df_raw = pd.read_csv(BASE + "/mobile_money_statements.csv")
 
 
 def parse_amount(value):
@@ -64,7 +64,7 @@ feature_cols = [
 ]
 
 out = df[["txn_dt"] + feature_cols + ["is_fraud"]]
-out.to_csv(BASE + r"\CleanedFeaturesFromLoan.csv", index=False)
+out.to_csv(BASE + "/CleanedFeaturesFromLoan.csv", index=False)
 print("Saved rows:", len(out))
 print("Date range:", out["txn_dt"].min(), "to", out["txn_dt"].max())
 print("Fraud rate:", f"{out['is_fraud'].mean():.2%}")
